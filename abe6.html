@@ -15,6 +15,17 @@
     padding: 20px;
     text-align: center;
   }
+  h1 {
+    max-width: 800px;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+  .cipher {
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    color: #0f172a;
+  }
   input, button {
     padding: 10px;
     margin: 5px;
@@ -37,21 +48,20 @@
     font-weight: bold;
     color: #15803d;
   }
-  .question-line {
-    margin: 5px 0;
-    font-weight: 600;
-  }
 </style>
 </head>
 <body>
 
-  <h1>A = D "Wkh nlg zdv irxqg, ghdolqj zlwk wubLqj wr ilw Lq. Vr brx eurxjkw klp d vfulswxuh
-UrpDv 12:2 (QLY)
-“Gr qrw frqiru pr wkh sdwwhuq ri wklv _____, exw eh wudqviruphg eb wkh uhqhzLqj ri brxu plqg. Wkhq brx zloo eh deoh wr whvw dqg dssuryh zkdw Jrg’v zloo lv—klv jrrg, sodvlqj dqg shuihfw zloo.”"</h1>
+  <div class="cipher">Cipher: A = D</div>
 
-  <div style="font-size: 1.5rem; letter-spacing: 0.3em; margin-bottom: 20px;">
-  
-  </div>
+  <h1>
+    Wkh nlg zdv irxqg, ghdolqj zlwk wubLqj wr ilw Lq. 
+    Vr brx eurxjkw klp d vfulswxuh<br>
+    UrpDv 12:2 (QLY)<br>
+    “Gr qrw frqiru pr wkh sdwwhuq ri wklv _____, 
+    exw eh wudqviruphg eb wkh uhqhzLqj ri brxu plqg. 
+    Wkhq brx zloo eh deoh wr whvw dqg dssuryh zkdw Jrg’v zloo lv—klv jrrg, sodvlqj dqg shuihfw zloo.”
+  </h1>
 
   <input type="text" id="codeInput" placeholder="Enter code" />
   <button onclick="checkCode()">Submit</button>
@@ -74,18 +84,17 @@ UrpDv 12:2 (QLY)
     if (code === 'world') {
       message.innerHTML = `
         <div class="verse">
-          Correct, <br>
+          Correct! <br>
           <a href="https://legoseahawker.github.io/CLYM/can8" target="_blank" rel="noopener noreferrer">
             Next Clue
           </a>
         </div>`;
-      attempts = 0; // reset attempts on success
+      attempts = 0;
     } else {
       attempts++;
       message.innerHTML = '<div class="error">Incorrect code. Please try again.</div>';
-
       if (attempts === 1) {
-        answerReveal.innerHTML = 'Hint: Find Clym Flyer'
+        answerReveal.innerHTML = 'Hint: Find Clym Flyer';
       }
     }
     codeInput.value = '';
@@ -95,6 +104,7 @@ UrpDv 12:2 (QLY)
 
 </body>
 </html>
+
 
 
 

@@ -69,7 +69,7 @@
     message.innerHTML = '';
     answerReveal.innerHTML = '';
 
-    if (code === 'Mark Benavidez') {
+    if (code === 'mark benavidez') {
       message.innerHTML = `
         <div class="verse">
           Correct, next clue find the scripture and verse<br>
@@ -82,8 +82,8 @@
       attempts++;
       message.innerHTML = '<div class="error">Incorrect code. Please try again.</div>';
 
-      if (attempts === 1) {
-        answerReveal.innerHTML = 'Hint: Find Clym Flyer'
+      if (attempts === 10) {
+        answerReveal.innerHTML = 'Hint: Find Flyer'
       }
     }
     codeInput.value = '';

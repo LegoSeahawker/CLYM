@@ -48,7 +48,7 @@
   <h1>What is the Clym Scripture?</h1>
 
   <div style="font-size: 1.5rem; letter-spacing: 0.3em; margin-bottom: 20px;">
-    _ &nbsp;_ _ _ _ _ _ _&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_ :_ _ 
+  
   </div>
 
   <input type="text" id="codeInput" placeholder="Enter code" />
@@ -69,11 +69,11 @@
     message.innerHTML = '';
     answerReveal.innerHTML = '';
 
-    if (code === '1 Timothy 4:12') {
+    if (code === '1 timothy 4:12') {
       message.innerHTML = `
         <div class="verse">
           Correct, next clue find the scripture and verse<br>
-          <a href="https://legoseahawker.github.io/CLYM/z0018" target="_blank" rel="noopener noreferrer">
+          <a href="https://legoseahawker.github.io/CLYM/love17" target="_blank" rel="noopener noreferrer">
             Next Clue
           </a>
         </div>`;
@@ -83,7 +83,7 @@
       message.innerHTML = '<div class="error">Incorrect code. Please try again.</div>';
 
       if (attempts === 1) {
-        answerReveal.innerHTML = 'Hint: Find Clym Flyer'
+        answerReveal.innerHTML = 'Hint: Find Clym Flyer _  _ _ _ _ _ _ _   _:_ _'
       }
     }
     codeInput.value = '';
