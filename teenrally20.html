@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Bible Clue - John 3:16</title>
+<style>
+  body {
+    font-family: sans-serif;
+    background: #f8fafc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 20px;
+  }
+  h1 {
+    max-width: 500px;
+    text-align: center;
+  }
+  input, button {
+    padding: 10px;
+    margin: 10px 5px;
+    font-size: 1rem;
+    width: 200px;
+  }
+  .message {
+    margin-top: 20px;
+    max-width: 600px;
+    background: #e0f2fe;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    text-align: center;
+  }
+  .error {
+    color: #dc2626;
+  }
+</style>
+</head>
+<body>
+  <h1>For God so loved the world.....</h1>
+  <input type="text" id="answerInput" placeholder="Enter your answer" />
+  <button onclick="checkAnswer()">Submit</button>
+
+  <div id="response"></div>
+
+<script>
+  function checkAnswer() {
+    const answer = document.getElementById('answerInput').value.trim().toLowerCase();
+    const response = document.getElementById('response');
+    response.innerHTML = '';
+
+    if (answer === 'john 3:16') {
+      response.innerHTML = `
+        <div class="message">
+          <strong>Correct!</strong><br><br>
+          David, you can see the great benefit of following after Christ instead of yielding to peer pressure.<br>
+          Remember, John 3:16 shows how much God loves you and wants you to share His love with others.<br><br>
+          <em>"For God so loved the world that He gave His only Son, that whoever believes in Him should not perish but have eternal life."</em><br>
+          — John 3:16
+        </div>
+      `;
+    } else {
+      response.innerHTML = `<div class="message error">Incorrect answer. Please try again.</div>`;
+    }
+  }
+</script>
+</body>
+</html>
+
+
+
