@@ -45,7 +45,7 @@
 </head>
 <body>
 
-  <h1>Who Is jacksonville's next revival with ?</h1>
+  <h1>The city with the darkest font in Argentina?</h1>
 
   <div style="font-size: 1.5rem; letter-spacing: 0.3em; margin-bottom: 20px;">
   
@@ -69,11 +69,11 @@
     message.innerHTML = '';
     answerReveal.innerHTML = '';
 
-    if (code === 'Mark Benavidez') {
+    if (code === 'Buenos Aires') {
       message.innerHTML = `
         <div class="verse">
-          Correct, next clue find the scripture and verse<br>
-          <a href="https://legoseahawker.github.io/CLYM/love17" target="_blank" rel="noopener noreferrer">
+          Correct, you find out that david goes to your school <br>
+          <a href="https://legoseahawker.github.io/CLYM/imp14" target="_blank" rel="noopener noreferrer">
             Next Clue
           </a>
         </div>`;
@@ -82,8 +82,8 @@
       attempts++;
       message.innerHTML = '<div class="error">Incorrect code. Please try again.</div>';
 
-      if (attempts === 1) {
-        answerReveal.innerHTML = 'Hint: Find Clym Flyer'
+      if (attempts === 10) {
+        answerReveal.innerHTML = 'Hint: Two Words'
       }
     }
     codeInput.value = '';
@@ -93,6 +93,4 @@
 
 </body>
 </html>
-
-
 
