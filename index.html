@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8" />
 <title>Enter Code</title>
 <style>
   body {
@@ -10,50 +10,91 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height: 100vh;
+    justify-content: flex-start;
+    padding: 30px;
+    min-height: 100vh;
   }
   input, button {
     padding: 10px;
-    margin: 5px;
+    margin: 10px 5px 5px 5px;
     font-size: 1rem;
   }
-  .verse {
+  .story, .explanation, .success, .error {
     margin-top: 20px;
     padding: 15px;
-    background: #e0f2fe;
     border-radius: 8px;
-    font-size: 1.2rem;
-    max-width: 400px;
+    max-width: 600px;
+    font-size: 1.1rem;
     text-align: center;
   }
+  .story {
+    background: #e0f2fe;
+    color: #0369a1;
+  }
+  .explanation {
+    background: #d1fae5;
+    color: #065f46;
+    font-weight: bold;
+  }
+  .success {
+    background: #d1fae5;
+    color: #065f46;
+    font-weight: bold;
+  }
   .error {
-    margin-top: 10px;
-    color: #dc2626;
+    background: #fee2e2;
+    color: #b91c1c;
+  }
+  a.next-clue {
+    display: inline-block;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #2563eb;
+    text-decoration: none;
+  }
+  a.next-clue:hover {
+    text-decoration: underline;
   }
 </style>
 </head>
 <body>
-  <h1>Created with a _______ ?</h1>
-  <input type="text" id="codeInput" placeholder="Enter code">
-  <button onclick="checkCode()">Submit</button>
+
+  <div class="story">
+    A new woman attends church and approaches the youth leader after the service. She says, “Please pray for my son, David. He’s 17, angry, and distant. Can you help him?” Before the youth leader can respond, she hurries away. Determined to assist, the youth leader reaches out to his group to gather any information about David. What might be causing David’s struggles, and how can the youth leader and group help him?
+  </div>
+
+  <div class="explanation">
+    Created with a _ _ _ _ _ _ _
+  </div>
+
+  <input type="text" id="codeInput" placeholder="Enter answer" autocomplete="off" />
+  <button id="submitBtn">Submit</button>
+
   <div id="message"></div>
 
 <script>
-  function checkCode() {
+  document.getElementById('submitBtn').addEventListener('click', function() {
     const code = document.getElementById('codeInput').value.trim().toLowerCase();
     const message = document.getElementById('message');
+    const input = document.getElementById('codeInput');
+    const button = document.getElementById('submitBtn');
+
     message.innerHTML = '';
 
     if (code === 'purpose') {
-      message.innerHTML = '<div class="verse">A new woman attends church and approaches the youth leader after the service. She says, “Please pray for my son, David. He’s 17, angry, and distant. Can you help him?” Before the youth leader can respond, she hurries away. Determined to assist, the youth leader reaches out to his group to gather any information about David. What might be causing David’s struggles, and how can the youth leader and group help him?</div>';
+      message.innerHTML = `
+        <div class="success">
+          Correct! <br />
+          <a class="next-clue" href="https://legoseahawker.github.io/CLYM/under1" target="_blank" rel="noopener noreferrer">Next Clue</a>
+        </div>
+      `;
+      input.disabled = true;
+      button.disabled = true;
     } else {
-      message.innerHTML = '<div class="error">Incorrect code. Please try again.</div>';
+      message.innerHTML = `<div class="error">Incorrect code. Please try again.</div>`;
     }
-  }
+  });
 </script>
+
 </body>
 </html>
-
-
-
