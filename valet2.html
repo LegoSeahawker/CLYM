@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8" />
 <title>Enter Code</title>
 <style>
   body {
@@ -12,6 +12,8 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
+    padding: 20px;
+    text-align: center;
   }
   input, button {
     padding: 10px;
@@ -25,44 +27,78 @@
     border-radius: 8px;
     font-size: 1.2rem;
     max-width: 400px;
-    text-align: center;
   }
   .error {
     margin-top: 10px;
     color: #dc2626;
   }
+  .answer-reveal {
+    margin-top: 15px;
+    font-weight: bold;
+    color: #15803d;
+  }
+  .question-line {
+    margin: 5px 0;
+    font-weight: 600;
+  }
 </style>
 </head>
 <body>
-  <h1>What do these words have in common
-     Cheeseburger,
-     Pizza Angel,
-     Cebu,
-     Belly Button
-	 _ _ _ _ _ _        _ _ _ _ _?</h1>
-  <input type="text" id="codeInput" placeholder="Enter code">
+
+  <h1>What do these words have in common?</h1>
+
+  <div id="word-list" style="margin-bottom: 10px;">
+    <div class="question-line">Cheeseburger,</div>
+    <div class="question-line">Pizza Angel,</div>
+    <div class="question-line">Cebu,</div>
+    <div class="question-line">Belly Button,</div>
+    <div class="question-line">The water buffalo song</div>
+  </div>
+
+  <div style="font-size: 1.5rem; letter-spacing: 0.3em; margin-bottom: 20px;">
+    _ _ _ _ _ _&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_ _ _ _ _
+  </div>
+
+  <input type="text" id="codeInput" placeholder="Enter code" />
   <button onclick="checkCode()">Submit</button>
+
   <div id="message"></div>
+  <div id="answerReveal" class="answer-reveal"></div>
 
 <script>
-  function checkCode() {
-    const code = document.getElementById('codeInput').value.trim().toLowerCase();
-    const message = document.getElementById('message');
-    message.innerHTML = '';
-if (code === 'veggie tales') {
-  message.innerHTML = `
-    <div class="verse">
-      Correct, next clue below  
-      <a href="https://legoseahawker.github.io/CLYM/chile3" target="_blank" rel="noopener noreferrer">
-        Next Clue
-      </a>
-    </div>`;
-} else {
-  message.innerHTML = '<div class="error">Incorrect code. Please try again.</div>';
+  let attempts = 0;
 
+  function checkCode() {
+    const codeInput = document.getElementById('codeInput');
+    const code = codeInput.value.trim().toLowerCase();
+    const message = document.getElementById('message');
+    const answerReveal = document.getElementById('answerReveal');
+
+    message.innerHTML = '';
+    answerReveal.innerHTML = '';
+
+    if (code === 'veggie tales') {
+      message.innerHTML = `
+        <div class="verse">
+          Correct, next clue below<br>
+          <a href="https://legoseahawker.github.io/CLYM/chile3" target="_blank" rel="noopener noreferrer">
+            Next Clue
+          </a>
+        </div>`;
+      attempts = 0; // reset attempts on success
+    } else {
+      attempts++;
+      message.innerHTML = '<div class="error">Incorrect code. Please try again.</div>';
+
+      if (attempts === 1) {
+        answerReveal.innerHTML = 'Hint: The answer is "Veggie Tales"';
+      }
     }
+    codeInput.value = '';
+    codeInput.focus();
   }
 </script>
+
 </body>
 </html>
 

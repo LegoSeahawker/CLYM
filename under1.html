@@ -1,62 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Enter Code</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Missionary Question</title>
 <style>
   body {
-    font-family: sans-serif;
-    background: #f8fafc;
+    font-family: Arial, sans-serif;
+    background: #f0f4f8;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     height: 100vh;
+    margin: 0;
+    padding: 1rem;
   }
-  input, button {
-    padding: 10px;
-    margin: 5px;
-    font-size: 1rem;
-  }
-  .verse {
-    margin-top: 20px;
-    padding: 15px;
-    background: #e0f2fe;
+  .container {
+    background: white;
+    padding: 2rem;
     border-radius: 8px;
-    font-size: 1.2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     max-width: 400px;
+    width: 100%;
     text-align: center;
   }
-  .error {
-    margin-top: 10px;
-    color: #dc2626;
+  input[type="text"] {
+    width: 80%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    margin-top: 1rem;
+  }
+  button {
+    margin-top: 1rem;
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    background: #007bff;
+    border: none;
+    color: white;
+    border-radius: 4px;
+  }
+  button:hover {
+    background: #0056b3;
+  }
+  .message {
+    margin-top: 1rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: green;
+  }
+  a.next-link {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: #007bff;
+    text-decoration: none;
+  }
+  a.next-link:hover {
+    text-decoration: underline;
   }
 </style>
 </head>
 <body>
-  <h1>What country was the latest missionary we sent out (The second flag on the right wall if facing the stage) closest to the sound room ?</h1>
-  <input type="text" id="codeInput" placeholder="Enter code">
-  <button onclick="checkCode()">Submit</button>
-  <div id="message"></div>
+  <div class="container">
+    <h2>Question</h2>
+    <p>What country was the latest missionary we sent out (The flag on the right wall if facing the stage) closest to the sound room?</p>
+    <input id="answer" type="text" placeholder="Enter country name" autocomplete="off" />
+    <br />
+    <button onclick="checkAnswer()">Submit</button>
+    <div id="message" class="message"></div>
+  </div>
 
 <script>
-  function checkCode() {
-    const code = document.getElementById('codeInput').value.trim().toLowerCase();
-    const message = document.getElementById('message');
-    message.innerHTML = '';
-if (code === 'peru') {
-  message.innerHTML = `
-    <div class="verse">
-      Correct, next clue below  
-      <a href="https://legoseahawker.github.io/CLYM/valet2" target="_blank" rel="noopener noreferrer">
-        https://legoseahawker.github.io/CLYM/valet2
-      </a>
-    </div>`;
-} else {
-  message.innerHTML = '<div class="error">Incorrect code. Please try again.</div>';
+  function checkAnswer() {
+    const answerInput = document.getElementById('answer');
+    const messageDiv = document.getElementById('message');
+    const userAnswer = answerInput.value.trim().toLowerCase();
 
+    if(userAnswer === 'peru') {
+      messageDiv.style.color = 'green';
+      messageDiv.innerHTML = 'Correct! <br><a class="next-link" href="https://legoseahawker.github.io/CLYM/valet2" target="_blank">Go to the next clue</a>';
+      answerInput.disabled = true;
+    } else {
+      messageDiv.style.color = 'red';
+      messageDiv.textContent = 'Sorry, try again.';
     }
   }
+
+  // Allow enter key to submit answer
+  document.getElementById('answer').addEventListener('keydown', function(event) {
+    if(event.key === 'Enter') {
+      checkAnswer();
+    }
+  });
 </script>
 </body>
 </html>
