@@ -1,164 +1,67 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Sudoku — 9 Missing Cells</title>
-  <style>
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;margin:24px;background:#f7fafc;color:#0f172a}
-    h1{font-size:1.4rem;margin-bottom:6px}
-    .grid{border-collapse:collapse;margin:12px 0}
-    .grid td{width:40px;height:40px;text-align:center;border:1px solid #cbd5e1;font-size:1.1rem}
-    .thick-row{border-bottom:3px solid #0f172a}
-    .thick-col{border-right:3px solid #0f172a}
-    .blank{background:#fffbe6}
-    .controls{margin-top:12px}
-    input[type=text].answer{width:100%;padding:8px;font-size:1rem;box-sizing:border-box}
-    button{margin-top:8px;padding:8px 12px;font-size:1rem;border-radius:6px;border:1px solid #0f172a;background:#0f172a;color:#fff;cursor:pointer}
-    .explain{background:#eef2ff;padding:12px;border-radius:8px;margin-top:12px}
-    .result{margin-top:12px;padding:10px;border-radius:6px;display:none}
-    .result.ok{background:#ecfdf5;color:#065f46;display:block}
-    .result.wrong{background:#fff1f2;color:#9f1239;display:block}
-    .answer-box{margin-top:12px;padding:12px;border:1px dashed #94a3b8;background:#fff}
-    a.btn-link{display:inline-block;margin-top:8px;padding:8px 12px;background:#e0f2fe;border-radius:6px;color:#0369a1;text-decoration:none}
-  </style>
+<meta charset="UTF-8">
+<title>Sudoku Puzzle</title>
+<style>
+  body { font-family: Arial, sans-serif; background: #f8fafc; padding: 20px; }
+  table { border-collapse: collapse; margin: 20px 0; }
+  td { border: 1px solid #333; width: 40px; height: 40px; text-align: center; font-size: 18px; }
+  input { width: 38px; height: 38px; text-align: center; font-size: 18px; border: none; }
+  .bold-border-top { border-top: 3px solid #000; }
+  .bold-border-left { border-left: 3px solid #000; }
+</style>
 </head>
 <body>
-  <h1>Sudoku — 9 Missing Cells</h1>
-  <p>Fill in the 9 missing cells or enter the full 81-digit answer (left-to-right, top-to-bottom) into the box below. When the answer is correct you will see a confirmation and a link.</p>
+<h1>Sudoku Puzzle</h1>
+<p>Fill in the 9 missing numbers to complete the Sudoku puzzle. Each row, column, and 3×3 box must contain the numbers 1 through 9 exactly once.</p>
 
-  <!-- Puzzle table -->
-  <table class="grid" aria-label="Sudoku puzzle">
-    <tbody>
-      <!-- row 1 -->
-      <tr>
-        <td>4</td><td>1</td><td>3</td><td>6</td><td class="blank">&nbsp;</td><td>8</td><td class="blank">&nbsp;</td><td>7</td><td>9</td>
-      </tr>
-      <!-- row 2 -->
-      <tr>
-        <td>5</td><td>9</td><td>2</td><td>4</td><td>7</td><td>3</td><td>1</td><td>6</td><td>8</td>
-      </tr>
-      <!-- row 3 -->
-      <tr>
-        <td class="blank">&nbsp;</td><td>8</td><td>7</td><td class="blank">&nbsp;</td><td>1</td><td>5</td><td>3</td><td>4</td><td>2</td>
-      </tr>
-      <!-- row 4 -->
-      <tr>
-        <td>9</td><td>3</td><td>4</td><td>2</td><td class="blank">&nbsp;</td><td>1</td><td>7</td><td>5</td><td>6</td>
-      </tr>
-      <!-- row 5 -->
-      <tr>
-        <td>2</td><td>6</td><td>1</td><td>5</td><td>9</td><td>7</td><td>8</td><td>3</td><td>4</td>
-      </tr>
-      <!-- row 6 -->
-      <tr>
-        <td>8</td><td>7</td><td>5</td><td class="blank">&nbsp;</td><td>4</td><td>6</td><td>9</td><td>2</td><td>1</td>
-      </tr>
-      <!-- row 7 -->
-      <tr>
-        <td>7</td><td>5</td><td>8</td><td>1</td><td>6</td><td>2</td><td>4</td><td class="blank">&nbsp;</td><td>3</td>
-      </tr>
-      <!-- row 8 -->
-      <tr>
-        <td>1</td><td>4</td><td>6</td><td>7</td><td class="blank">&nbsp;</td><td>9</td><td>2</td><td>8</td><td>5</td>
-      </tr>
-      <!-- row 9 -->
-      <tr>
-        <td>3</td><td>2</td><td class="blank">&nbsp;</td><td>8</td><td>5</td><td>4</td><td>6</td><td>1</td><td>7</td>
-      </tr>
-    </tbody>
-  </table>
+<table>
+<tr>
+  <td class="bold-border-top bold-border-left">5</td><td>3</td><td>4</td><td class="bold-border-left">6</td><td>7</td><td>8</td><td class="bold-border-left">9</td><td>1</td><td>2</td>
+</tr>
+<tr>
+  <td class="bold-border-left">6</td><td>7</td><td>2</td><td class="bold-border-left">1</td><td>9</td><td>5</td><td class="bold-border-left">3</td><td>4</td><td>8</td>
+</tr>
+<tr>
+  <td class="bold-border-left">1</td><td>9</td><td>8</td><td class="bold-border-left">3</td><td>4</td><td>2</td><td class="bold-border-left">5</td><td>6</td><td>7</td>
+</tr>
+<tr>
+  <td class="bold-border-top bold-border-left">8</td><td>5</td><td>9</td><td class="bold-border-left">7</td><td>6</td><td>1</td><td class="bold-border-left">4</td><td>2</td><td>3</td>
+</tr>
+<tr>
+  <td class="bold-border-left">4</td><td>2</td><td>6</td><td class="bold-border-left">8</td><td>5</td><td>3</td><td class="bold-border-left">7</td><td>9</td><td>1</td>
+</tr>
+<tr>
+  <td class="bold-border-left">7</td><td>1</td><td>3</td><td class="bold-border-left">9</td><td>2</td><td>4</td><td class="bold-border-left">8</td><td>5</td><td>6</td>
+</tr>
+<tr>
+  <td class="bold-border-top bold-border-left">9</td><td>6</td><td>1</td><td class="bold-border-left">5</td><td>3</td><td>7</td><td class="bold-border-left"><input maxlength="1"></td><td><input maxlength="1"></td><td><input maxlength="1"></td>
+</tr>
+<tr>
+  <td class="bold-border-left">2</td><td>8</td><td>7</td><td class="bold-border-left">4</td><td>1</td><td>9</td><td class="bold-border-left"><input maxlength="1"></td><td><input maxlength="1"></td><td><input maxlength="1"></td>
+</tr>
+<tr>
+  <td class="bold-border-left">3</td><td>4</td><td>5</td><td class="bold-border-left">2</td><td>8</td><td>6</td><td class="bold-border-left"><input maxlength="1"></td><td><input maxlength="1"></td><td><input maxlength="1"></td>
+</tr>
+</table>
 
-  <div class="explain">
-    <strong>Quick explanation: How to solve Sudoku</strong>
-    <ol>
-      <li>Each row, column and 3×3 box must contain the numbers 1–9 exactly once.</li>
-      <li>Look for squares that have only one possible number (single candidates) first.</li>
-      <li>Use elimination: remove numbers already present in the same row, column, and box to narrow candidates.</li>
-      <li>When stuck, try scanning for "hidden singles" or use pairs/triples techniques to eliminate options.</li>
-    </ol>
-  </div>
+<p><strong>How to Solve:</strong> Start by scanning rows, columns, and 3×3 boxes for missing numbers. Use logic to deduce each missing value. Avoid guessing—every cell can be solved with reasoning.</p>
 
-  <div class="controls">
-    <label for="fullAnswer"><strong>Enter full answer</strong> (81 digits, row-wise):</label>
-    <input id="fullAnswer" class="answer" type="text" placeholder="Enter 81 digits, e.g. 4136..." maxlength="81" />
-    <button id="checkBtn">Check Answer</button>
+<input type="text" id="answer" placeholder="Enter the 9 missing digits in order">
+<button onclick="checkAnswer()">Submit</button>
+<p id="result"></p>
 
-    <div id="result" class="result"></div>
-
-    <div class="answer-box" id="reveal" style="display:none">
-      <strong>Solution grid</strong>
-      <pre id="solution" style="margin-top:8px;line-height:1.3;background:transparent;border:none;padding:0">4 1 3 | 6 2 8 | 5 7 9
-5 9 2 | 4 7 3 | 1 6 8
-6 8 7 | 9 1 5 | 3 4 2
-------+-------+------
-9 3 4 | 2 8 1 | 7 5 6
-2 6 1 | 5 9 7 | 8 3 4
-8 7 5 | 3 4 6 | 9 2 1
-------+-------+------
-7 5 8 | 1 6 2 | 4 9 3
-1 4 6 | 7 3 9 | 2 8 5
-3 2 9 | 8 5 4 | 6 1 7</pre>
-    </div>
-
-    <button id="showAnswer" style="background:#f3f4f6;color:#0f172a;border:1px solid #cbd5e1">Show Answer</button>
-  </div>
-
-  <script>
-    (function(){
-      // expected full answer (left-to-right, top-to-bottom)
-      const expected = '413628579592473168687915342934281756261597834875346921758162493146739285329854617';
-      const input = document.getElementById('fullAnswer');
-      const btn = document.getElementById('checkBtn');
-      const result = document.getElementById('result');
-      const reveal = document.getElementById('reveal');
-      const showBtn = document.getElementById('showAnswer');
-
-      function showMessage(ok, text){
-        result.className = 'result ' + (ok? 'ok':'wrong');
-        result.textContent = text;
-        if(ok){
-          // show link
-          const link = document.createElement('a');
-          link.href = 'https://legoseahawker.github.io/CLYM/van5';
-          link.target = '_blank';
-          link.rel = 'noopener';
-          link.className = 'btn-link';
-          link.textContent = 'Continue';
-          result.appendChild(document.createElement('br'));
-          result.appendChild(link);
-        }
-      }
-
-      btn.addEventListener('click', function(){
-        const val = (input.value || '').trim();
-        if(val.length !== 81 || !/^\d{81}$/.test(val)){
-          showMessage(false,'Please enter exactly 81 digits (only numbers 1–9).');
-          return;
-        }
-        if(val === expected){
-          showMessage(true,'Correct!');
-        } else {
-          showMessage(false,'Incorrect — try again.');
-        }
-      });
-
-      showBtn.addEventListener('click', function(){
-        reveal.style.display = reveal.style.display === 'none' ? 'block' : 'none';
-      });
-
-      // allow Enter key to submit
-      input.addEventListener('keydown', function(e){
-        if(e.key === 'Enter'){
-          e.preventDefault();
-          btn.click();
-        }
-      });
-    })();
-  </script>
+<script>
+function checkAnswer() {
+  const ans = document.getElementById('answer').value.trim();
+  if (ans === '256983939') {
+    document.getElementById('result').innerHTML = 'Correct! <a href="https://legoseahawker.github.io/CLYM/van5" target="_blank">Continue</a>';
+  } else {
+    document.getElementById('result').textContent = 'Incorrect, try again!';
+  }
+}
+</script>
 </body>
 </html>
-
-
-
 

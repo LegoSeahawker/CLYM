@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Enter Code</title>
+<style>
+  body {
+    font-family: sans-serif;
+    background: #f8fafc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 20px;
+    text-align: center;
+  }
+  input, button {
+    padding: 10px;
+    margin: 5px;
+    font-size: 1rem;
+  }
+  .verse {
+    margin-top: 20px;
+    padding: 15px;
+    background: #e0f2fe;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    max-width: 400px;
+  }
+  .error {
+    margin-top: 10px;
+    color: #dc2626;
+  }
+  .answer-reveal {
+    margin-top: 15px;
+    font-weight: bold;
+    color: #15803d;
+  }
+  .question-line {
+    margin: 5px 0;
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+
+  <h1>Unscamble these letters</h1>
+ rcuogea
+  <div style="font-size: 1.5rem; letter-spacing: 0.3em; margin-bottom: 20px;">
+  
+  </div>
+
+  <input type="text" id="codeInput" placeholder="Enter code" />
+  <button onclick="checkCode()">Submit</button>
+
+  <div id="message"></div>
+  <div id="answerReveal" class="answer-reveal"></div>
+
+<script>
+  let attempts = 0;
+
+  function checkCode() {
+    const codeInput = document.getElementById('codeInput');
+    const code = codeInput.value.trim().toLowerCase();
+    const message = document.getElementById('message');
+    const answerReveal = document.getElementById('answerReveal');
+
+    message.innerHTML = '';
+    answerReveal.innerHTML = '';
+
+    if (code === 'courage') {
+      message.innerHTML = `
+        <div class="verse">
+          Correct, pray for courage to speak with David about Christ<br>
+          <a href="https://legoseahawker.github.io/CLYM/abe6" target="_blank" rel="noopener noreferrer">
+            Next Clue
+          </a>
+        </div>`;
+      attempts = 0; // reset attempts on success
+    } else {
+      attempts++;
+      message.innerHTML = '<div class="error">Incorrect code. Please try again.</div>';
+
+      if (attempts === 10) {
+        answerReveal.innerHTML = 'Hint: think of characteristics'
+      }
+    }
+    codeInput.value = '';
+    codeInput.focus();
+  }
+</script>
+
+</body>
+</html>
+
+
+
