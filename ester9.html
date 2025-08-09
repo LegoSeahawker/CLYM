@@ -45,7 +45,7 @@
 </head>
 <body>
 
-  <h1>Who Is jacksonville's next revival with ?</h1>
+  <h1>For the jacksonville church what number should you call if you have questions (no dashes or spaces)?</h1>
 
   <div style="font-size: 1.5rem; letter-spacing: 0.3em; margin-bottom: 20px;">
   
@@ -69,7 +69,7 @@
     message.innerHTML = '';
     answerReveal.innerHTML = '';
 
-    if (code === 'Mark Benavidez') {
+    if (code === '9103827062') {
       message.innerHTML = `
         <div class="verse">
           Correct, next clue find the scripture and verse<br>
@@ -82,8 +82,8 @@
       attempts++;
       message.innerHTML = '<div class="error">Incorrect code. Please try again.</div>';
 
-      if (attempts === 1) {
-        answerReveal.innerHTML = 'Hint: Find Clym Flyer'
+      if (attempts === 10) {
+        answerReveal.innerHTML = 'Hint: Front of church door'
       }
     }
     codeInput.value = '';

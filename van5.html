@@ -4,64 +4,173 @@
 <meta charset="UTF-8">
 <title>Sudoku Puzzle</title>
 <style>
-  body { font-family: Arial, sans-serif; background: #f8fafc; padding: 20px; }
-  table { border-collapse: collapse; margin: 20px 0; }
-  td { border: 1px solid #333; width: 40px; height: 40px; text-align: center; font-size: 18px; }
-  input { width: 38px; height: 38px; text-align: center; font-size: 18px; border: none; }
-  .bold-border-top { border-top: 3px solid #000; }
-  .bold-border-left { border-left: 3px solid #000; }
+  body {
+    font-family: Arial, sans-serif;
+    background: #f0f0f0;
+    text-align: center;
+    padding: 20px;
+  }
+  table {
+    border-collapse: collapse;
+    margin: 0 auto;
+  }
+  td {
+    border: 1px solid #000;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    font-size: 20px;
+  }
+  input {
+    width: 38px;
+    height: 38px;
+    text-align: center;
+    font-size: 20px;
+    border: none;
+  }
+  .thick-border-top { border-top: 3px solid black; }
+  .thick-border-left { border-left: 3px solid black; }
+  .thick-border-right { border-right: 3px solid black; }
+  .thick-border-bottom { border-bottom: 3px solid black; }
 </style>
 </head>
 <body>
+
 <h1>Sudoku Puzzle</h1>
-<p>Fill in the 9 missing numbers to complete the Sudoku puzzle. Each row, column, and 3×3 box must contain the numbers 1 through 9 exactly once.</p>
+<p>Fill in the empty cells so that each row, column, and 3×3 box contains all digits from 1 to 9 exactly once.  
+To answer, type the 9 missing numbers (left → right, top → bottom through the blanks) into the answer box below.</p>
 
 <table>
-<tr>
-  <td class="bold-border-top bold-border-left">5</td><td>3</td><td>4</td><td class="bold-border-left">6</td><td>7</td><td>8</td><td class="bold-border-left">9</td><td>1</td><td>2</td>
-</tr>
-<tr>
-  <td class="bold-border-left">6</td><td>7</td><td>2</td><td class="bold-border-left">1</td><td>9</td><td>5</td><td class="bold-border-left">3</td><td>4</td><td>8</td>
-</tr>
-<tr>
-  <td class="bold-border-left">1</td><td>9</td><td>8</td><td class="bold-border-left">3</td><td>4</td><td>2</td><td class="bold-border-left">5</td><td>6</td><td>7</td>
-</tr>
-<tr>
-  <td class="bold-border-top bold-border-left">8</td><td>5</td><td>9</td><td class="bold-border-left">7</td><td>6</td><td>1</td><td class="bold-border-left">4</td><td>2</td><td>3</td>
-</tr>
-<tr>
-  <td class="bold-border-left">4</td><td>2</td><td>6</td><td class="bold-border-left">8</td><td>5</td><td>3</td><td class="bold-border-left">7</td><td>9</td><td>1</td>
-</tr>
-<tr>
-  <td class="bold-border-left">7</td><td>1</td><td>3</td><td class="bold-border-left">9</td><td>2</td><td>4</td><td class="bold-border-left">8</td><td>5</td><td>6</td>
-</tr>
-<tr>
-  <td class="bold-border-top bold-border-left">9</td><td>6</td><td>1</td><td class="bold-border-left">5</td><td>3</td><td>7</td><td class="bold-border-left"><input maxlength="1"></td><td><input maxlength="1"></td><td><input maxlength="1"></td>
-</tr>
-<tr>
-  <td class="bold-border-left">2</td><td>8</td><td>7</td><td class="bold-border-left">4</td><td>1</td><td>9</td><td class="bold-border-left"><input maxlength="1"></td><td><input maxlength="1"></td><td><input maxlength="1"></td>
-</tr>
-<tr>
-  <td class="bold-border-left">3</td><td>4</td><td>5</td><td class="bold-border-left">2</td><td>8</td><td>6</td><td class="bold-border-left"><input maxlength="1"></td><td><input maxlength="1"></td><td><input maxlength="1"></td>
-</tr>
+  <tbody>
+    <!-- Row 1 -->
+    <tr>
+      <td class="thick-border-top thick-border-left">5</td>
+      <td>3</td>
+      <td><input maxlength="1" id="cell1"></td> <!-- blank -->
+      <td class="thick-border-left">6</td>
+      <td>7</td>
+      <td>8</td>
+      <td class="thick-border-left">9</td>
+      <td>1</td>
+      <td class="thick-border-right">2</td>
+    </tr>
+    <!-- Row 2 -->
+    <tr>
+      <td>6</td>
+      <td><input maxlength="1" id="cell2"></td> <!-- blank -->
+      <td>2</td>
+      <td>1</td>
+      <td>9</td>
+      <td>5</td>
+      <td>3</td>
+      <td>4</td>
+      <td>8</td>
+    </tr>
+    <!-- Row 3 -->
+    <tr>
+      <td>1</td>
+      <td>9</td>
+      <td>8</td>
+      <td>3</td>
+      <td>4</td>
+      <td>2</td>
+      <td>5</td>
+      <td><input maxlength="1" id="cell3"></td> <!-- blank -->
+      <td>7</td>
+    </tr>
+    <!-- Row 4 -->
+    <tr>
+      <td class="thick-border-left">8</td>
+      <td>5</td>
+      <td>9</td>
+      <td class="thick-border-left">7</td>
+      <td>6</td>
+      <td>1</td>
+      <td class="thick-border-left">4</td>
+      <td>2</td>
+      <td class="thick-border-right"><input maxlength="1" id="cell4"></td> <!-- blank -->
+    </tr>
+    <!-- Row 5 -->
+    <tr>
+      <td>4</td>
+      <td>2</td>
+      <td>6</td>
+      <td>8</td>
+      <td><input maxlength="1" id="cell5"></td> <!-- blank -->
+      <td>3</td>
+      <td>7</td>
+      <td>9</td>
+      <td>1</td>
+    </tr>
+    <!-- Row 6 -->
+    <tr>
+      <td>7</td>
+      <td>1</td>
+      <td>3</td>
+      <td>9</td>
+      <td>2</td>
+      <td>4</td>
+      <td>8</td>
+      <td><input maxlength="1" id="cell6"></td> <!-- blank -->
+      <td>6</td>
+    </tr>
+    <!-- Row 7 -->
+    <tr>
+      <td class="thick-border-left">9</td>
+      <td>6</td>
+      <td>1</td>
+      <td class="thick-border-left">5</td>
+      <td>3</td>
+      <td>7</td>
+      <td class="thick-border-left"><input maxlength="1" id="cell7"></td> <!-- blank -->
+      <td>8</td>
+      <td class="thick-border-right">4</td>
+    </tr>
+    <!-- Row 8 -->
+    <tr>
+      <td>2</td>
+      <td>8</td>
+      <td>7</td>
+      <td>4</td>
+      <td>1</td>
+      <td>9</td>
+      <td>6</td>
+      <td>3</td>
+      <td><input maxlength="1" id="cell8"></td> <!-- blank -->
+    </tr>
+    <!-- Row 9 -->
+    <tr>
+      <td>3</td>
+      <td>4</td>
+      <td>5</td>
+      <td>2</td>
+      <td>8</td>
+      <td>6</td>
+      <td>1</td>
+      <td><input maxlength="1" id="cell9"></td> <!-- blank -->
+      <td>7</td>
+    </tr>
+  </tbody>
 </table>
 
-<p><strong>How to Solve:</strong> Start by scanning rows, columns, and 3×3 boxes for missing numbers. Use logic to deduce each missing value. Avoid guessing—every cell can be solved with reasoning.</p>
-
-<input type="text" id="answer" placeholder="Enter the 9 missing digits in order">
+<br>
+<label>Answer (9 digits): <input type="text" id="answer" maxlength="9"></label>
 <button onclick="checkAnswer()">Submit</button>
 <p id="result"></p>
 
 <script>
 function checkAnswer() {
-  const ans = document.getElementById('answer').value.trim();
-  if (ans === '256983939') {
-    document.getElementById('result').innerHTML = 'Correct! <a href="https://legoseahawker.github.io/CLYM/van5" target="_blank">Continue</a>';
+  const correctAnswer = "256983939"; // 9 missing cells in order
+  const userAnswer = document.getElementById("answer").value;
+  if (userAnswer === correctAnswer) {
+    document.getElementById("result").innerHTML = 
+      '✅ Correct! <a href="https://legoseahawker.github.io/CLYM/van5">Continue</a>';
   } else {
-    document.getElementById('result').textContent = 'Incorrect, try again!';
+    document.getElementById("result").textContent = "❌ Incorrect, try again.";
   }
 }
 </script>
+
 </body>
 </html>
 
