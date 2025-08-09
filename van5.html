@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8" />
 <title>Sudoku Puzzle</title>
 <style>
   body {
@@ -21,6 +21,10 @@
     text-align: center;
     font-size: 20px;
   }
+  input[type="text"], input[type="number"] {
+    font-size: 20px;
+    text-align: center;
+  }
   input {
     width: 38px;
     height: 38px;
@@ -28,31 +32,65 @@
     font-size: 20px;
     border: none;
   }
-  .thick-border-top { border-top: 3px solid black; }
-  .thick-border-left { border-left: 3px solid black; }
-  .thick-border-right { border-right: 3px solid black; }
-  .thick-border-bottom { border-bottom: 3px solid black; }
+  /* Thicker borders to define the 3 big boxes */
+  td {
+    border: 1px solid #000;
+  }
+  /* Thicker right border on columns 3 and 6 */
+  td:nth-child(3), td:nth-child(6) {
+    border-right: 3px solid black;
+  }
+  /* Thicker bottom border on rows 3 and 6 */
+  tbody tr:nth-child(3) td,
+  tbody tr:nth-child(6) td {
+    border-bottom: 3px solid black;
+  }
+  /* Thicker left border on first column */
+  td:first-child {
+    border-left: 3px solid black;
+  }
+  /* Thicker top border on first row */
+  tbody tr:first-child td {
+    border-top: 3px solid black;
+  }
+  /* Thicker right border on last column */
+  td:last-child {
+    border-right: 3px solid black;
+  }
+  /* Thicker bottom border on last row */
+  tbody tr:last-child td {
+    border-bottom: 3px solid black;
+  }
+
+  /* Make the answer input box bigger */
+  #answer {
+    width: 250px;
+    height: 40px;
+    font-size: 24px;
+    letter-spacing: 4px;
+    padding: 5px;
+    margin-left: 10px;
+  }
 </style>
 </head>
 <body>
 
 <h1>Sudoku Puzzle</h1>
-<p>Fill in the empty cells so that each row, column, and 3×3 box contains all digits from 1 to 9 exactly once.  
-To answer, type the 9 missing numbers (left → right, top → bottom through the blanks) into the answer box below.</p>
+<p>To answer, type the 9 missing numbers (left → right, top → bottom through the blanks) into the answer box below.</p>
 
 <table>
   <tbody>
     <!-- Row 1 -->
     <tr>
-      <td class="thick-border-top thick-border-left">5</td>
+      <td>5</td>
       <td>3</td>
       <td><input maxlength="1" id="cell1"></td> <!-- blank -->
-      <td class="thick-border-left">6</td>
+      <td>6</td>
       <td>7</td>
       <td>8</td>
-      <td class="thick-border-left">9</td>
+      <td>9</td>
       <td>1</td>
-      <td class="thick-border-right">2</td>
+      <td>2</td>
     </tr>
     <!-- Row 2 -->
     <tr>
@@ -80,15 +118,15 @@ To answer, type the 9 missing numbers (left → right, top → bottom through th
     </tr>
     <!-- Row 4 -->
     <tr>
-      <td class="thick-border-left">8</td>
+      <td>8</td>
       <td>5</td>
       <td>9</td>
-      <td class="thick-border-left">7</td>
+      <td>7</td>
       <td>6</td>
       <td>1</td>
-      <td class="thick-border-left">4</td>
+      <td>4</td>
       <td>2</td>
-      <td class="thick-border-right"><input maxlength="1" id="cell4"></td> <!-- blank -->
+      <td><input maxlength="1" id="cell4"></td> <!-- blank -->
     </tr>
     <!-- Row 5 -->
     <tr>
@@ -116,15 +154,15 @@ To answer, type the 9 missing numbers (left → right, top → bottom through th
     </tr>
     <!-- Row 7 -->
     <tr>
-      <td class="thick-border-left">9</td>
+      <td>9</td>
       <td>6</td>
       <td>1</td>
-      <td class="thick-border-left">5</td>
+      <td>5</td>
       <td>3</td>
       <td>7</td>
-      <td class="thick-border-left"><input maxlength="1" id="cell7"></td> <!-- blank -->
+      <td><input maxlength="1" id="cell7"></td> <!-- blank -->
       <td>8</td>
-      <td class="thick-border-right">4</td>
+      <td>4</td>
     </tr>
     <!-- Row 8 -->
     <tr>
@@ -153,8 +191,8 @@ To answer, type the 9 missing numbers (left → right, top → bottom through th
   </tbody>
 </table>
 
-<br>
-<label>Answer (9 digits): <input type="text" id="answer" maxlength="9"></label>
+<br />
+<label>Answer (9 digits): <input type="text" id="answer" maxlength="9" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" /></label>
 <button onclick="checkAnswer()">Submit</button>
 <p id="result"></p>
 
@@ -173,4 +211,3 @@ function checkAnswer() {
 
 </body>
 </html>
-
