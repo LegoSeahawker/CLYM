@@ -1,98 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<title>Enter Code</title>
-<style>
-  body {
-    font-family: sans-serif;
-    background: #f8fafc;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    padding: 20px;
-    text-align: center;
-  }
-  input, button {
-    padding: 10px;
-    margin: 5px;
-    font-size: 1rem;
-  }
-  .verse {
-    margin-top: 20px;
-    padding: 15px;
-    background: #e0f2fe;
-    border-radius: 8px;
-    font-size: 1.2rem;
-    max-width: 400px;
-  }
-  .error {
-    margin-top: 10px;
-    color: #dc2626;
-  }
-  .answer-reveal {
-    margin-top: 15px;
-    font-weight: bold;
-    color: #15803d;
-  }
-  .question-line {
-    margin: 5px 0;
-    font-weight: 600;
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bible Quiz: Daniel's Story</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        .question {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        .answer {
+            margin-bottom: 20px;
+        }
+        .answer input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .submit-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+        .next-clue {
+            display: none;
+            margin-top: 20px;
+            font-size: 1.1em;
+        }
+        .next-clue a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .next-clue a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
 
-  <h1>Bring the leader the story of Daniel Avoiding Peer pressure in a physical bible ?</h1>
-
-  <div style="font-size: 1.5rem; letter-spacing: 0.3em; margin-bottom: 20px;">
-  
-  </div>
-
-  <input type="text" id="codeInput" placeholder="Enter code" />
-  <button onclick="checkCode()">Submit</button>
-
-  <div id="message"></div>
-  <div id="answerReveal" class="answer-reveal"></div>
+<div class="container">
+    <h1>Bible Quiz: Daniel's Story</h1>
+    <p class="question">Question: Where did Daniel avoid peer pressure in the Bible?</p>
+    <div class="answer">
+        <label for="answer">Your Answer:</label>
+        <input type="text" id="answer" placeholder="Enter your answer here">
+    </div>
+    <button class="submit-btn" onclick="checkAnswer()">Submit Answer</button>
+    <div class="next-clue" id="nextClue">
+        <p>Correct! Proceed to the next clue: <a href="https://legoseahawker.github.io/CLYM/van5" target="_blank">Next Clue</a></p>
+    </div>
+</div>
 
 <script>
-  let attempts = 0;
+    function checkAnswer() {
+        var userAnswer = document.getElementById('answer').value.trim().toLowerCase();
+        var correctAnswer = 'babylon';
 
-  function checkCode() {
-    const codeInput = document.getElementById('codeInput');
-    const code = codeInput.value.trim().toLowerCase();
-    const message = document.getElementById('message');
-    const answerReveal = document.getElementById('answerReveal');
-
-    message.innerHTML = '';
-    answerReveal.innerHTML = '';
-
-    if (code === 'Babylon') {
-      message.innerHTML = `
-        <div class="verse">
-          Good Job diving into the scriptures, you find out that david has done some bad things because of his friends. You let him know of 1 John 1:9<br>
-          <a href="https://legoseahawker.github.io/CLYM/van5" target="_blank" rel="noopener noreferrer">
-            Next Clue
-          </a>
-        </div>`;
-      attempts = 0; // reset attempts on success
-    } else {
-      attempts++;
-      message.innerHTML = '<div class="error">Incorrect code. Please try again.</div>';
-
-      if (attempts === 1) {
-        answerReveal.innerHTML = 'Hint: Ask some one for a bible'
-      }
+        if (userAnswer === correctAnswer) {
+            document.getElementById('nextClue').style.display = 'block';
+        } else {
+            alert('Incorrect answer. Please try again.');
+        }
     }
-    codeInput.value = '';
-    codeInput.focus();
-  }
 </script>
 
 </body>
 </html>
-
-
-
