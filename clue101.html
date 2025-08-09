@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Enter Code</title>
+<style>
+  body {
+    font-family: sans-serif;
+    background: #f8fafc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  input, button {
+    padding: 10px;
+    margin: 5px;
+    font-size: 1rem;
+  }
+  .verse {
+    margin-top: 20px;
+    padding: 15px;
+    background: #e0f2fe;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    max-width: 400px;
+    text-align: center;
+  }
+  .error {
+    margin-top: 10px;
+    color: #dc2626;
+  }
+</style>
+</head>
+<body>
+  <h1>TESTING 2345 _______ ?</h1>
+  <input type="text" id="codeInput" placeholder="Enter code">
+  <button onclick="checkCode()">Submit</button>
+  <div id="message"></div>
+
+<script>
+  function checkCode() {
+    const code = document.getElementById('codeInput').value.trim().toLowerCase();
+    const message = document.getElementById('message');
+    message.innerHTML = '';
+
+    if (code === 'purpose') {
+      message.innerHTML = '<div class="verse">A new woman attends church and approaches the youth leader after the service. She says, “Please pray for my son, David. He’s 17, angry, and distant. Can you help him?” Before the youth leader can respond, she hurries away. Determined to assist, the youth leader reaches out to his group to gather any information about David. What might be causing David’s struggles, and how can the youth leader and group help him?</div>';
+    } else {
+      message.innerHTML = '<div class="error">Incorrect code. Please try again.</div>';
+    }
+  }
+</script>
+</body>
+</html>
+
+
+
