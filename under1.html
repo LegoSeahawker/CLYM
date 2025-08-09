@@ -44,11 +44,17 @@
     const code = document.getElementById('codeInput').value.trim().toLowerCase();
     const message = document.getElementById('message');
     message.innerHTML = '';
+if (code === 'chile') {
+  message.innerHTML = `
+    <div class="verse">
+      Correct, next clue below  
+      <a href="https://legoseahawker.github.io/CLYM/valet2" target="_blank" rel="noopener noreferrer">
+        https://legoseahawker.github.io/CLYM/valet2
+      </a>
+    </div>`;
+} else {
+  message.innerHTML = '<div class="error">Incorrect code. Please try again.</div>';
 
-    if (code === 'chile') {
-      message.innerHTML = '<div class="verse">Correct, next clue below  https://legoseahawker.github.io/CLYM/valet2</div>';
-    } else {
-      message.innerHTML = '<div class="error">Incorrect code. Please try again.</div>';
     }
   }
 </script>
